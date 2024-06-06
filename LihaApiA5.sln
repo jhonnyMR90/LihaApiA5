@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LihaApiA5", "LihaApiA5\LihaApiA5.csproj", "{407308C9-226F-4F90-B5EC-6A2DE5AA186F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{407308C9-226F-4F90-B5EC-6A2DE5AA186F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{407308C9-226F-4F90-B5EC-6A2DE5AA186F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{407308C9-226F-4F90-B5EC-6A2DE5AA186F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{407308C9-226F-4F90-B5EC-6A2DE5AA186F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E6134D5E-8049-46A4-8A5C-4217E2EB0F87}
+	EndGlobalSection
+EndGlobal
