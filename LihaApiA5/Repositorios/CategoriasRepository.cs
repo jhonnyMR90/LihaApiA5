@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace LIhaApiA5.Data.Repositorios
 {
-    public class CategoriasRepository : Icategorias
+    public class CategoriasRepository : IGRUPOCATEGORIALINEA
     {
         private readonly MySqlConfiguration _connectionString;
 
@@ -22,31 +22,34 @@ namespace LIhaApiA5.Data.Repositorios
         {
             return new MySqlConnection(_connectionString.ConnectionString);
         }
-        public async Task<IEnumerable<categorias>> GetAllCategorias()
+        public async Task<IEnumerable<GRUPOCATEGORIALINEA>> GetAllCategorias()
         {
             var db = dbConnection();
 
-            var sql = @"Select CodigoCategoria, NombreCategoria, AbreviadoCategoria, IF(ActivaCategoria='0','DESACTIVADO','ACTIVADO') AS activaCategoria from categorias";
-            return await db.QueryAsync<categorias>(sql, new{ });
+            var sql = @"select NombreGrupo, AbreviadoGrupo , NombreCategoria, AbreviadoCategoria,  NombreLinea, AbreviadoLinea from grupos  JOIN  categorias on categorias.CodigoCategoria = grupos.CategoriasGrupos join lineas on lineas.CodigoLinea = categorias.LineasCategorias;";
+            return await db.QueryAsync<GRUPOCATEGORIALINEA>(sql, new{ });
 
         }
 
-        public  Task<categorias> GetDetails(string CodigoCategoria)
-        {
-            var db = dbConnection();
+        //public  Task<categorias> GetDetails(string CodigoCategoria)
+        //{
+        //    var db = dbConnection();
+        //
+        //    var sql = @"Select CodigoCategoria, NombreCategoria, AbreviadoCategoria, IF(ActivaCategoria='0','DESACTIVADO','ACTIVADO') AS activaCategoria from categorias where CodigoCategoria= @codigo ";
+        //    return db.QueryFirstOrDefaultAsync<categorias>(sql, new { codigo = CodigoCategoria });
+        //}
 
-            var sql = @"Select CodigoCategoria, NombreCategoria, AbreviadoCategoria, IF(ActivaCategoria='0','DESACTIVADO','ACTIVADO') AS activaCategoria from categorias where CodigoCategoria= @codigo ";
-            return db.QueryFirstOrDefaultAsync<categorias>(sql, new { codigo = CodigoCategoria });
-        }
 
-        public Task<bool> InsertCategorias(categorias categoria)
-        {
-            throw new NotImplementedException();
-        }
 
-        public Task<bool> UpdateCategorias(categorias categoria)
-        {
-            throw new NotImplementedException();
-        }
+        //
+        //public Task<bool> InsertCategorias(categorias categoria)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        //
+        //public Task<bool> UpdateCategorias(categorias categoria)
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

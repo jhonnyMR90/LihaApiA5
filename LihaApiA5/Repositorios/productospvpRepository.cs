@@ -21,23 +21,29 @@ namespace LIhaApiA5.Data.Repositorios
         {
             return new MySqlConnection(_connectionString.ConnectionString);
         }
-        public async Task<IEnumerable<productospvp>> GetAllProductos()
+
+
+        public Task<IEnumerable<productospvp>> GetDetails(string CodigoVentaProducto)
         {
             var db = dbConnection();
-
-            var sql = @"select * from productospvp";
-            return await db.QueryAsync<productospvp>(sql, new { });
+            var sql = @"select * from productospvp WHERE  CodigoVentaProducto like @codigo";
+            return db.QueryAsync<productospvp>(sql, new { codigo = CodigoVentaProducto });
+        }
+        
+        public Task<IEnumerable<productospvp>> GetDetailsDescription(string DescripcionProducto)
+        {
+            var parametro = "%" + DescripcionProducto + "%";
+            var db = dbConnection();
+            var sql = @"select * from productospvp WHERE  DescripcionProducto like @codigo";
+            return db.QueryAsync<productospvp>(sql, new { codigo = parametro });
         }
 
-        public Task<productospvp> GetDetails(string CodigoVentaProducto)
+        public Task<IEnumerable<productospvp>> GetDetailsPalabra(string palabra)
         {
+            var parametro = "%" + palabra + "%";
             var db = dbConnection();
-
-
-
-
-            var sql = @"select * from productospvp WHERE  CodigoVentaProducto like @codigo";
-            return db.QueryFirstOrDefaultAsync<productospvp>(sql, new { codigo = CodigoVentaProducto });
+            var sql = @"select * from productospvp WHERE CodigoVentaProducto LIKE @codigo OR DescripcionProducto LIKE @codigo OR Marca LIKE @codigo LIMIT 10";
+            return db.QueryAsync<productospvp>(sql, new { codigo = parametro });
         }
     }
 }

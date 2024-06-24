@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace LIhaApiA5.Data.Repositorios
 {
-    public interface Icategorias
+    public interface IGRUPOCATEGORIALINEA
     {
-        Task<IEnumerable<categorias>> GetAllCategorias();
+        Task<IEnumerable<GRUPOCATEGORIALINEA>> GetAllCategorias();
 
-        Task<categorias> GetDetails(string CodigoCategoria);
+        //Task<categorias> GetDetails(string CodigoCategoria);
 
         //Task<bool> InsertCategorias(categorias categoria);
 
