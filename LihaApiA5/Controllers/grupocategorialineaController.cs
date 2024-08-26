@@ -7,25 +7,19 @@ namespace LIhaApiA5.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CategoriasController : ControllerBase
+    public class Grupo_categoria_lineaController : ControllerBase
     {
-        private readonly Icategorias _cateogriasrepository;
+        private readonly IGRUPOCATEGORIALINEA _GRUPOCATEGORIALINEA;
 
-        public CategoriasController(Icategorias CategoriasRepository)
+        public Grupo_categoria_lineaController(IGRUPOCATEGORIALINEA CategoriasRepository)
         {
-            _cateogriasrepository = CategoriasRepository;
+            _GRUPOCATEGORIALINEA = CategoriasRepository;
         }
 
         [HttpGet]
         public async Task<IActionResult> GetAllCategorias()
         {
-            return Ok(await _cateogriasrepository.GetAllCategorias());
-        }
-
-        [HttpGet("{CodigoCategoria}")]
-        public async Task<IActionResult> GetDetails(string CodigoCategoria)
-        {
-            return Ok(await _cateogriasrepository.GetDetails(CodigoCategoria));
+            return Ok(await _GRUPOCATEGORIALINEA.GetAllCategorias());
         }
 
         //[HttpPost]

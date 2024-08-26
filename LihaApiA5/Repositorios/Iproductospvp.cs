@@ -9,8 +9,10 @@ namespace LIhaApiA5.Data.Repositorios
 {
     public interface Iproductospvp
     {
-        Task<IEnumerable<productospvp>> GetAllProductos();
-
-        Task<productospvp> GetDetails(string CodigoVentaProducto);
+        Task<IEnumerable<productospvp>> GetDetails(string CodigoVentaProducto);
+        
+        Task<IEnumerable<productospvp>> GetDetailsDescription(string DescripcionProducto);
+        
+        Task<IEnumerable<productospvp>> GetDetailsPalabra(string palabra);
     }
 }

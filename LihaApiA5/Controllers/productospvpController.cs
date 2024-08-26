@@ -15,16 +15,58 @@ namespace LIhaApiA5.Controllers
         {
             _productospvprepository = ProductospvpRepository;
         }
-        [HttpGet]
-        public async Task<IActionResult> GetAllProductos()
-        {
-            return Ok(await _productospvprepository.GetAllProductos());
-        }
 
-        [HttpGet("{CodigoVentaProducto}")]
+        [HttpGet("byCode/{CodigoVentaProducto}")]
         public async Task<IActionResult> GetDetails(string CodigoVentaProducto)
         {
-            return Ok(await _productospvprepository.GetDetails(CodigoVentaProducto));
+            string decodedCodigoVentaProducto = Uri.UnescapeDataString(CodigoVentaProducto);
+
+            var productos = await _productospvprepository.GetDetails(decodedCodigoVentaProducto);
+
+            if (productos == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(productos);
         }
+
+        [HttpGet("byDescription/{DescripcionProducto}")]
+        public async Task<IActionResult> GetDetailsDescription(string DescripcionProducto)
+        {
+            string decodedDescripcionProducto = Uri.UnescapeDataString(DescripcionProducto);
+
+            var productos = await _productospvprepository.GetDetailsDescription(decodedDescripcionProducto);
+
+            if (productos == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(productos);
+        }
+
+        [HttpGet("byPalabra/{palabra}")]
+        public async Task<IActionResult> GetDetailsPalabra(string palabra)
+        {
+            string decodedPalabra = Uri.UnescapeDataString(palabra);
+
+            var productos = await _productospvprepository.GetDetailsPalabra(decodedPalabra);
+
+            if (productos == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(productos);
+        }
+
+
+
+
+
+
+
+
     }
 }
