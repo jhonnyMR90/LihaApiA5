@@ -1,4 +1,4 @@
-﻿using LIhaApiA5.Data.Repositorios;
+﻿using LihaApiA5.@interface;
 using LIhaApiA5.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +9,7 @@ namespace LIhaApiA5.Controllers
     [ApiController]
     public class productospvpController : ControllerBase
     {
+
         private readonly Iproductospvp _productospvprepository;
 
         public productospvpController(Iproductospvp ProductospvpRepository)
@@ -60,13 +61,5 @@ namespace LIhaApiA5.Controllers
 
             return Ok(productos);
         }
-
-
-
-
-
-
-
-
     }
 }

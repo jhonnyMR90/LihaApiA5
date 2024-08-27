@@ -1,4 +1,5 @@
 ﻿using Dapper;
+using LihaApiA5.@interface;
 using LIhaApiA5.Model;
 using MySql.Data.MySqlClient;
 using System;
