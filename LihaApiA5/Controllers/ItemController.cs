@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LihaApiA5.Controllers
 {
     [Route("api/[controller]")]
-    [Authorize]
+
     [ApiController]
     public class ItemController : ControllerBase
     {

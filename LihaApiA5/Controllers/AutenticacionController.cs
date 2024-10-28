@@ -22,7 +22,7 @@ namespace LihaApiA5.Controllers
         [Route("Validar")]
         public IActionResult Validar([FromBody] LoginUser request)
         {
-            if (request.usuario == "carmen" && request.clave =="123456") {
+            if (request.usuario == "LihaMind" && request.clave =="@FelizIA@2024**") {
             var keyBytes = Encoding.ASCII.GetBytes(secretKey);
                 var claims = new ClaimsIdentity();
                 claims.AddClaim(new Claim(ClaimTypes.NameIdentifier, request.usuario));
