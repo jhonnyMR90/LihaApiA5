@@ -15,6 +15,7 @@ namespace LIhaApiA5.Model
         public string? categoria { get; set; }
         public string? linea { get; set; }
         public string? tipoproducto { get; set; }
+        public string? division { get; set; }
 
     }                                
 }

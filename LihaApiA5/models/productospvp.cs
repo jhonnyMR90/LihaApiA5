@@ -10,6 +10,9 @@
         public string? Marca { get; set; }
         public string? Existencia { get; set; }
         public string? nombreBodega { get; set; }
+        public string? FechaLlegada { get; set; }
+        public string? CantidadCompraDetalle { get; set; }
+
 
 
     }

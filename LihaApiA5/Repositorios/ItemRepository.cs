@@ -27,7 +27,7 @@ namespace LIhaApiA5.Data.Repositorios
         {
             var db = dbConnection();
 
-            var sql = @"select DISTINCT CodigoVentaProducto, DescripcionProducto,Marca,Grupo,categoria,linea,tipoproducto from productospvp";
+            var sql = @"select DISTINCT CodigoVentaProducto, DescripcionProducto,Marca,Grupo,categoria,linea,tipoproducto,division from productospvp";
             return await db.QueryAsync<itemModel>(sql, new{ });
 
         }
