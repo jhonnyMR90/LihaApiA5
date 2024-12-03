@@ -46,7 +46,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc(VersionApi, new OpenApiInfo
     {
-        Title = "API FelizIA V 0.15",
+        Title = "API FelizIA V 1.00",
         Version = VersionApi,
         Description = "API rest para la intercionexion entre Data Lake y APP IA de fuerza de ventas"
     });
