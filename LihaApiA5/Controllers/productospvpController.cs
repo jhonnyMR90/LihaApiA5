@@ -1,4 +1,4 @@
-﻿using LIhaApiA5.Data.Repositorios;
+﻿using LihaApiA5.@interface;
 using LIhaApiA5.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -9,6 +9,7 @@ namespace LIhaApiA5.Controllers
     [ApiController]
     public class productospvpController : ControllerBase
     {
+
         private readonly Iproductospvp _productospvprepository;
 
         public productospvpController(Iproductospvp ProductospvpRepository)
@@ -22,6 +23,21 @@ namespace LIhaApiA5.Controllers
             string decodedCodigoVentaProducto = Uri.UnescapeDataString(CodigoVentaProducto);
 
             var productos = await _productospvprepository.GetDetails(decodedCodigoVentaProducto);
+
+            if (productos == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(productos);
+        }        
+        
+        [HttpGet("byCodeTransito/{CodigoVentaProducto}")]
+        public async Task<IActionResult> GetItemsTansito(string CodigoVentaProducto)
+        {
+            string decodedCodigoVentaProducto = Uri.UnescapeDataString(CodigoVentaProducto);
+
+            var productos = await _productospvprepository.GetItemsTansito(decodedCodigoVentaProducto);
 
             if (productos == null)
             {
@@ -60,13 +76,5 @@ namespace LIhaApiA5.Controllers
 
             return Ok(productos);
         }
-
-
-
-
-
-
-
-
     }
 }
