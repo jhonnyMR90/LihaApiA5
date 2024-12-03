@@ -31,6 +31,13 @@ namespace LIhaApiA5.Data.Repositorios
             return db.QueryAsync<productospvp>(sql, new { codigo = CodigoVentaProducto });
         }
         
+        public Task<IEnumerable<productospvp>> GetItemsTansito(string CodigoVentaProducto)
+        {
+            var db = dbConnection();
+            var sql = @"select * from productospvp WHERE  CodigoVentaProducto like @codigo  and CantidadCompraDetalle <> 'S/N'";
+            return db.QueryAsync<productospvp>(sql, new { codigo = CodigoVentaProducto });
+        }
+        
         public Task<IEnumerable<productospvp>> GetDetailsDescription(string DescripcionProducto)
         {
             var parametro = "%" + DescripcionProducto + "%";
@@ -41,10 +48,12 @@ namespace LIhaApiA5.Data.Repositorios
 
         public Task<IEnumerable<productospvp>> GetDetailsPalabra(string palabra)
         {
-            var parametro = "%" + palabra + "%";
+            var parametro = "%" + palabra + "";
             var db = dbConnection();
-            var sql = @"select * from productospvp WHERE CodigoVentaProducto LIKE @codigo OR DescripcionProducto LIKE @codigo OR Marca LIKE @codigo LIMIT 10";
+            var sql = @"select * from productospvp WHERE CodigoVentaProducto LIKE @codigo OR DescripcionProducto LIKE @codigo OR Marca LIKE @codigo";
             return db.QueryAsync<productospvp>(sql, new { codigo = parametro });
         }
+        
+
     }
 }

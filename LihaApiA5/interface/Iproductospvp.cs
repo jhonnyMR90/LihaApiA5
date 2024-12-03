@@ -10,6 +10,8 @@ namespace LihaApiA5.@interface
     public interface Iproductospvp
     {
         Task<IEnumerable<productospvp>> GetDetails(string CodigoVentaProducto);
+        
+        Task<IEnumerable<productospvp>> GetItemsTansito(string CodigoVentaProducto);
 
         Task<IEnumerable<productospvp>> GetDetailsDescription(string DescripcionProducto);
 

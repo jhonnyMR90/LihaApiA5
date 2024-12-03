@@ -30,6 +30,21 @@ namespace LIhaApiA5.Controllers
             }
 
             return Ok(productos);
+        }        
+        
+        [HttpGet("byCodeTransito/{CodigoVentaProducto}")]
+        public async Task<IActionResult> GetItemsTansito(string CodigoVentaProducto)
+        {
+            string decodedCodigoVentaProducto = Uri.UnescapeDataString(CodigoVentaProducto);
+
+            var productos = await _productospvprepository.GetItemsTansito(decodedCodigoVentaProducto);
+
+            if (productos == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(productos);
         }
 
         [HttpGet("byDescription/{DescripcionProducto}")]
