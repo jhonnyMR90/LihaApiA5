@@ -48,7 +48,7 @@ namespace LIhaApiA5.Data.Repositorios
 
         public Task<IEnumerable<productospvp>> GetDetailsPalabra(string palabra)
         {
-            var parametro = "%" + palabra + "";
+            var parametro = "%" + palabra + "%";
             var db = dbConnection();
             var sql = @"select * from productospvp WHERE CodigoVentaProducto LIKE @codigo OR DescripcionProducto LIKE @codigo OR Marca LIKE @codigo";
             return db.QueryAsync<productospvp>(sql, new { codigo = parametro });
