@@ -1,4 +1,5 @@
 using LihaApiA5.@interface;
+using LihaApiA5.Repositorios;
 using LIhaApiA5.Data.Repositorios;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
@@ -46,7 +47,7 @@ builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc(VersionApi, new OpenApiInfo
     {
-        Title = "API FelizIA V 1.00",
+        Title = "API FelizIA V 1.10",
         Version = VersionApi,
         Description = "API rest para la intercionexion entre Data Lake y APP IA de fuerza de ventas"
     });
@@ -75,11 +76,18 @@ builder.Services.AddSwaggerGen(c =>
 });
 
 });
-
 var MySqlConfig = new MySqlConfiguration(builder.Configuration.GetConnectionString("MySqlConnection"));
 builder.Services.AddSingleton(MySqlConfig);
+
+var MySqlConfig2 = new MySqlConfiguration2(builder.Configuration.GetConnectionString("MySqlConnection2"));
+builder.Services.AddSingleton(MySqlConfig2);
+
+
+
 builder.Services.AddScoped<IItem, ItemRepository>();
 builder.Services.AddScoped<Iproductospvp, productospvpRepository>();
+builder.Services.AddScoped<IClienteVendedor, ClienteVendedorRepository>() ;
+builder.Services.AddScoped<Iempleado, EmpleadoRepository>() ;
 var app = builder.Build();
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
