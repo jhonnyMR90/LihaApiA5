@@ -86,8 +86,11 @@ builder.Services.AddSingleton(MySqlConfig2);
 
 builder.Services.AddScoped<IItem, ItemRepository>();
 builder.Services.AddScoped<Iproductospvp, productospvpRepository>();
-builder.Services.AddScoped<IClienteVendedor, ClienteVendedorRepository>() ;
+builder.Services.AddScoped<IClienteCartera, ClienteCarteraRepository>();
+builder.Services.AddScoped<IClienteVendedor, ClienteVendedorRepository>();
 builder.Services.AddScoped<Iempleado, EmpleadoRepository>() ;
+
+
 var app = builder.Build();
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
