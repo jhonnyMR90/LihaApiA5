@@ -1,5 +1,6 @@
 ﻿using LihaApiA5.@interface;
 using LIhaApiA5.Data.Repositorios;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace LihaApiA5.Controllers
@@ -15,12 +16,14 @@ namespace LihaApiA5.Controllers
             _ClienteCarteraRespository = ClienteCarteraRepository;
         }
 
+
+        
         [HttpGet("byCodigoCliente/{CodigoCliente}")]
-        public async Task<IActionResult> GetCartera(string CodigoCliente, string CodigoVendedor)
+        public async Task<IActionResult> GetCartera(string CodigoCliente, string UsuarioVendedor)
         {
    
 
-            var Cartera = await _ClienteCarteraRespository.GetCartera(CodigoCliente, CodigoVendedor);
+            var Cartera = await _ClienteCarteraRespository.GetCartera(CodigoCliente, UsuarioVendedor);
 
             if (Cartera == null)
             {

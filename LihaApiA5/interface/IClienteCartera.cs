@@ -4,6 +4,6 @@ namespace LihaApiA5.@interface
 {
     public interface IClienteCartera
     {
-        Task<IEnumerable<ClienteCarteraModel>> GetCartera(String CodigoCliente, String CodigoVendedor);
+        Task<IEnumerable<ClienteCarteraModel>> GetCartera(String CodigoCliente, String UsuarioVendedor);
     }
 }
