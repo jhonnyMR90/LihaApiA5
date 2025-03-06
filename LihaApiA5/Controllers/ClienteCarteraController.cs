@@ -19,11 +19,11 @@ namespace LihaApiA5.Controllers
 
         [Authorize]
         [HttpGet("byCartera/{CodigoCliente}")]
-        public async Task<IActionResult> GetCartera(string CodigoCliente, string UsuarioVendedor)
+        public async Task<IActionResult> GetCartera(string CodigoCliente)
         {
    
 
-            var Cartera = await _ClienteCarteraRespository.GetCartera(CodigoCliente, UsuarioVendedor);
+            var Cartera = await _ClienteCarteraRespository.GetCartera(CodigoCliente);
 
             if (Cartera == null)
             {
