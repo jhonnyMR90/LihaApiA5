@@ -28,5 +28,13 @@ namespace LihaApiA5.Repositorios
             return db.QueryAsync<ClienteCarteraModel>(sql, new { codigo = CodigoCliente, empleado = usuario });
         }
 
+
+        public Task<IEnumerable<ClienteCupoModel>> GetCupo(String CodigoCliente)
+        {
+            var db = dbConnection();
+            var sql = @"select CodigoCliente,Cupo_Aprobado, (Cupo_Aprobado-(Saldo+Cheques)) As CupoDisponible from cupo_clientes  where CodigoCliente= @codigo;"; 
+            return db.QueryAsync<ClienteCupoModel>(sql, new { codigo = CodigoCliente});
+        }
+
     }
 }
